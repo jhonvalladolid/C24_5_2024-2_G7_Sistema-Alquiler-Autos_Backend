@@ -1,0 +1,35 @@
+{
+  "name": "integrator-project-5to-c24a-2024-ii",
+  "version": "1.0.0",
+  "description": "API para la gestión de alquiler de vehículos, con funcionalidades para usuarios y administradores, incluyendo la gestión de vehículos, solicitudes de alquiler y reseñas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhonvalladolid/C24_5_2024-2_G7_Sistema-Alquiler-Autos_Backend.git"
+  },
+  "keywords": [
+    "gestión",
+    "alquiler",
+    "autos",
+    "vehículos",
+    "API",
+    "Express",
+    "MySQL",
+    "Node.js",
+    "administrador",
+    "usuarios",
+    "backend"
+  ],
+  "author": "Valladolid Castro Jhon Michael <jhon.valladolid@tecsup.edu.pe>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhonvalladolid/C24_5_2024-2_G7_Sistema-Alquiler-Autos_Backend/issues"
+  },
+  "homepage": "https://github.com/jhonvalladolid/C24_5_2024-2_G7_Sistema-Alquiler-Autos_Backend#readme",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
