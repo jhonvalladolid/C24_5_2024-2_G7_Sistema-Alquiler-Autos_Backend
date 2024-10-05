@@ -1,22 +1,26 @@
-const mysql = require('mysql2');
-require('dotenv').config(); // Cargar las variables de entorno desde el archivo .env
+const { Sequelize } = require('sequelize'); // Importa Sequelize
+require('dotenv').config(); // Cargar variables de entorno desde el archivo .env
 
-// Crear conexión a MySQL utilizando variables de entorno
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,       // Toma el valor de DB_HOST del archivo .env
-  user: process.env.DB_USER,       // Toma el valor de DB_USER del archivo .env
-  password: process.env.DB_PASS,   // Toma el valor de DB_PASS del archivo .env
-  database: process.env.DB_NAME,   // Toma el valor de DB_NAME del archivo .env
-  port: process.env.DB_PORT || 3306  // Usa el puerto definido o 3306 por defecto
-});
-
-// Conectar a la base de datos
-connection.connect((err) => {
-  if (err) {
-    console.error('Error conectando a la base de datos:', err.stack);
-    return;
+// Crear instancia de Sequelize utilizando variables de entorno
+const sequelize = new Sequelize(
+  process.env.DB_NAME,    // Nombre de la base de datos
+  process.env.DB_USER,    // Usuario de la base de datos
+  process.env.DB_PASS,    // Contraseña de la base de datos
+  {
+    host: process.env.DB_HOST,   // Host de la base de datos
+    dialect: 'mysql',            // Dialecto que estamos utilizando (MySQL)
+    port: process.env.DB_PORT || 3306, // Puerto de conexión
+    logging: false  // Desactiva el registro de SQL en consola
   }
-  console.log('Conexión exitosa a la base de datos MySQL.');
-});
+);
 
-module.exports = connection;
+// Probar la conexión a la base de datos
+sequelize.authenticate()
+  .then(() => {
+    console.log('Conexión exitosa a la base de datos MySQL con Sequelize.');
+  })
+  .catch((err) => {
+    console.error('No se pudo conectar a la base de datos MySQL:', err);
+  });
+
+module.exports = sequelize;
