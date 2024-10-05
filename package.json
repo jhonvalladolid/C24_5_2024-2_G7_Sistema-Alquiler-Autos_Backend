@@ -4,6 +4,8 @@
   "description": "API para la gestión de alquiler de vehículos, con funcionalidades para usuarios y administradores, incluyendo la gestión de vehículos, solicitudes de alquiler y reseñas.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +32,11 @@
   },
   "homepage": "https://github.com/jhonvalladolid/C24_5_2024-2_G7_Sistema-Alquiler-Autos_Backend#readme",
   "dependencies": {
-    "express": "^4.21.0"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mysql2": "^3.11.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
