@@ -1,8 +1,19 @@
 const express = require('express');
+const cors = require('cors'); // Importar el paquete cors
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 require('dotenv').config(); // Cargar variables de entorno
+
+// Configuración de CORS
+app.use(cors({
+  origin: 'http://localhost:4200', // Permitir solicitudes desde el frontend (Angular)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeceras permitidas
+}));
+
+// Middleware para parsear JSON
+app.use(express.json());
 
 // Importar la conexión a la base de datos y las rutas
 const db = require('./src/config/db');
@@ -13,9 +24,6 @@ const estadoRoutes = require('./src/routes/EstadoRoutes');
 const vehiculoRoutes = require('./src/routes/VehiculoRoutes');
 const solicitudRoutes = require('./src/routes/SolicitudRoutes');
 const alquilerRoutes = require('./src/routes/AlquilerRoutes'); // Importa las rutas de alquiler
-
-// Middleware para parsear JSON
-app.use(express.json());
 
 // Ruta de prueba para la raíz
 app.get('/', (req, res) => {
